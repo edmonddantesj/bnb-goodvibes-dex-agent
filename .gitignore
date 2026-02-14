@@ -1,0 +1,19 @@
+# secrets
+.env
+.env.*
+*.key
+*.pem
+
+# local secret strategies
+strategies/*.local.*
+
+# artifacts
+runs/
+reports/*.html
+
+# node/python
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+.DS_Store

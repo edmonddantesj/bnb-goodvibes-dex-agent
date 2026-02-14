@@ -1,0 +1,53 @@
+{
+  "sdna": "AOI-2026-0214-BNB-DEX-01",
+  "run_id": "run_20260214_192247",
+  "timestamp": "2026-02-14T10:22:56.764Z",
+  "chain": "bsc",
+  "wallet": "0x357735bA07F1E460f59578112B2bf40d98c23fd1",
+  "mode": "baseline",
+  "execution": "LIVE",
+  "risk_gate": {
+    "max_slippage_bps": 50,
+    "max_tx_count": 4,
+    "allow_tokens": [
+      "USDT",
+      "WBNB"
+    ],
+    "deny_tokens": [],
+    "user_confirmed_execution": true
+  },
+  "quote": {
+    "from": "USDT",
+    "to": "WBNB",
+    "amount_in": "3000000000000000000",
+    "quoted_out": "4766168427490093",
+    "min_out": "4742337585352642",
+    "slippage_bps": 50
+  },
+  "actions": [
+    {
+      "type": "approve",
+      "txHash": "0x10641f82e759d6a618a34d0b54a0dd6efc75657d43e0ef5148ba5825449f951c",
+      "explorerUrl": "https://bscscan.com/tx/0x10641f82e759d6a618a34d0b54a0dd6efc75657d43e0ef5148ba5825449f951c",
+      "status": "success"
+    },
+    {
+      "type": "swap",
+      "txHash": "0x31743560c941d7becb05b221c442c06da68bedf486704f12141806b6e7c57d86",
+      "explorerUrl": "https://bscscan.com/tx/0x31743560c941d7becb05b221c442c06da68bedf486704f12141806b6e7c57d86",
+      "status": "success"
+    }
+  ],
+  "snapshots": {
+    "before": {
+      "usdt": "10090000000000000000",
+      "wbnb": "0",
+      "wallet": "0x357735bA07F1E460f59578112B2bf40d98c23fd1"
+    },
+    "after": {
+      "usdt": "7090000000000000000",
+      "wbnb": "4766167503911079"
+    }
+  },
+  "notes": "LIVE run executed onchain. Verify tx hashes on BscScan."
+}

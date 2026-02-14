@@ -1,0 +1,31 @@
+{
+  "sdna": "AOI-2026-0214-BNB-DEX-01",
+  "repo": "https://github.com/edmonddantesj/bnb-goodvibes-dex-agent",
+  "commit": "7296aed3a7bdfdfbdd2e8e8533ca610523ebea05",
+  "version": "0.1.0",
+  "created_at": "2026-02-14T10:23:58.595Z",
+  "artifacts": {
+    "latest_report": "reports/run_20260214_192247_baseline_live.json",
+    "demo_video": "",
+    "proof_urls": [
+      "https://bscscan.com/tx/0x10641f82e759d6a618a34d0b54a0dd6efc75657d43e0ef5148ba5825449f951c",
+      "https://bscscan.com/tx/0x31743560c941d7becb05b221c442c06da68bedf486704f12141806b6e7c57d86"
+    ],
+    "notes": ""
+  },
+  "attribution": {
+    "sources": [
+      {
+        "name": "PancakeSwap docs",
+        "url": "https://developer.pancakeswap.finance/contracts/infinity/overview",
+        "license": "unknown"
+      },
+      {
+        "name": "BNB hackathon repo",
+        "url": "https://github.com/bnb-chain/good-vibes-only-openclaw-edition",
+        "license": "unknown"
+      }
+    ],
+    "royalty_plan_ref": "context/ROYALTY_AND_ATTRIBUTION_POLICY.md"
+  }
+}

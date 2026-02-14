@@ -1,0 +1,23 @@
+{
+  "sdna": "AOI-2026-0214-BNB-DEX-01",
+  "run_id": "run_20260214_181952",
+  "timestamp": "2026-02-14T09:19:52.305Z",
+  "chain": "bsc",
+  "wallet": "0x__FILL_WALLET__",
+  "mode": "baseline",
+  "risk_gate": {
+    "max_slippage_bps": 50,
+    "max_tx_count": 4,
+    "allow_tokens": [
+      "USDT",
+      "WBNB"
+    ],
+    "deny_tokens": []
+  },
+  "actions": [],
+  "snapshots": {
+    "before": {},
+    "after": {}
+  },
+  "notes": "STUB: no onchain tx executed yet. Use this to validate S-DNA report plumbing."
+}

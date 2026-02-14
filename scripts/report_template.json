@@ -1,0 +1,23 @@
+{
+  "sdna": "AOI-2026-0214-BNB-DEX-01",
+  "run_id": "run_YYYYMMDD_HHMMSS",
+  "timestamp": "2026-02-14T00:00:00+09:00",
+  "chain": "bsc",
+  "wallet": "0x...",
+  "mode": "baseline",
+  "risk_gate": {
+    "max_slippage_bps": 50,
+    "max_tx_count": 4,
+    "allow_tokens": ["USDT", "WBNB"],
+    "deny_tokens": []
+  },
+  "actions": [
+    {"type": "approve", "txHash": "0x...", "explorerUrl": "https://bscscan.com/tx/...", "status": "success"},
+    {"type": "swap", "txHash": "0x...", "explorerUrl": "https://bscscan.com/tx/...", "status": "success"}
+  ],
+  "snapshots": {
+    "before": {},
+    "after": {}
+  },
+  "notes": ""
+}

@@ -1,0 +1,65 @@
+{
+  "sdna": "AOI-2026-0214-BNB-DEX-01",
+  "run_id": "run_20260214_191519",
+  "timestamp": "2026-02-14T10:15:21.341Z",
+  "chain": "bsc",
+  "wallet": "0x357735bA07F1E460f59578112B2bf40d98c23fd1",
+  "mode": "baseline",
+  "execution": "DRY_RUN",
+  "risk_gate": {
+    "max_slippage_bps": 50,
+    "max_tx_count": 4,
+    "allow_tokens": [
+      "USDT",
+      "WBNB"
+    ],
+    "deny_tokens": [],
+    "user_confirmed_execution": false
+  },
+  "quote": {
+    "from": "USDT",
+    "to": "WBNB",
+    "amount_in": "3000000000000000000",
+    "quoted_out": "4761870108174487",
+    "min_out": "4738060757633614",
+    "slippage_bps": 50
+  },
+  "actions": [
+    {
+      "type": "approve",
+      "txHash": null,
+      "explorerUrl": null,
+      "status": "dry_run",
+      "details": {
+        "needed": "3000000000000000000",
+        "allowance": "0"
+      }
+    },
+    {
+      "type": "swap",
+      "txHash": null,
+      "explorerUrl": null,
+      "status": "dry_run",
+      "details": {
+        "from": "USDT",
+        "to": "WBNB",
+        "amountIn": "3000000000000000000",
+        "quotedOut": "4761870108174487",
+        "minOut": "4738060757633614",
+        "slippageBps": 50
+      }
+    }
+  ],
+  "snapshots": {
+    "before": {
+      "usdt": "10090000000000000000",
+      "wbnb": "0",
+      "wallet": "0x357735bA07F1E460f59578112B2bf40d98c23fd1"
+    },
+    "after": {
+      "usdt": "10090000000000000000",
+      "wbnb": "0"
+    }
+  },
+  "notes": "DRY_RUN only. Set CONFIRM_LIVE=YES to execute onchain."
+}
