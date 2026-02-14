@@ -47,6 +47,18 @@ node scripts/gen_manifest.mjs --latest-report reports/<your-report>.json
   - `strategies/secret_a.local.mjs`
   - `strategies/secret_b.local.mjs`
 
+## Optional wallet risk gate (Cybercentry)
+This repo includes a **disabled-by-default** wallet risk gate hook.
+
+Enable it by setting these in your local `.env` (never commit secrets):
+```bash
+ENABLE_WALLET_RISK_GATE=1
+CYBERCENTRY_ENDPOINT=<official endpoint>
+CYBERCENTRY_API_KEY=<your key>
+CYBERCENTRY_FAIL_CLOSED=1
+```
+- If the gate returns a non-benign verdict (or errors when fail-closed), LIVE execution will abort.
+
 ## Notes
 - No private keys or secret strategy params are committed.
 - Baseline should remain enough to reproduce and verify on-chain proof.

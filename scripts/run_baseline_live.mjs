@@ -9,6 +9,7 @@ import 'dotenv/config';
 import fs from 'node:fs';
 import path from 'node:path';
 import { ethers } from 'ethers';
+import { checkWalletRisk } from './cybercentry_wallet_gate.mjs';
 
 const SDNA_ID = process.env.SDNA_ID || 'AOI-2026-0214-BNB-DEX-01';
 const MODE = process.env.MODE || 'baseline';
@@ -67,6 +68,12 @@ async function main() {
 
   const provider = new ethers.JsonRpcProvider(RPC_URL);
   const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
+
+  // Optional wallet risk gate (Cybercentry)
+  const walletRisk = await checkWalletRisk({ wallet: wallet.address, chain: 'bsc' });
+  if (walletRisk?.enabled && walletRisk?.status === 'fail') {
+    throw new Error(`Wallet risk gate FAILED: ${walletRisk.reason || walletRisk.risk || 'unknown'}`);
+  }
 
   const usdt = new ethers.Contract(USDT, ERC20_ABI, wallet);
   const wbnb = new ethers.Contract(WBNB, ERC20_ABI, wallet);
@@ -168,6 +175,7 @@ async function main() {
       min_out: minOut.toString(),
       slippage_bps: MAX_SLIPPAGE_BPS
     },
+    wallet_risk_gate: walletRisk,
     actions,
     snapshots: { before, after },
     notes: LIVE
