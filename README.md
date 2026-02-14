@@ -50,3 +50,7 @@ node scripts/gen_manifest.mjs --latest-report reports/<your-report>.json
 ## Notes
 - No private keys or secret strategy params are committed.
 - Baseline should remain enough to reproduce and verify on-chain proof.
+
+## Transparency
+- Build log: `AUTONOMOUS_LOG.md`
+- Security & ethics stance: `SECURITY_ETHICS.md`
