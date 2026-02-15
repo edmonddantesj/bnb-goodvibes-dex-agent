@@ -1,21 +1,18 @@
-# AOI Guard allowlist (default-deny)
-# Auto-generated. Edit only with Edmond approval.
+# AOI Guard allowlist (tightened)
 
-# Root allowlist file
 .aoi-allowlist
-
-# GitHub automation
 .github/
 
-# Existing root entries
-.env.example
-.gitignore
-AUTONOMOUS_LOG.md
+# Node project
+package.json
+package-lock.json
+
+# App
+manifest.json
+scripts/
+reports/
+
+# Docs
 README.md
 SECURITY_ETHICS.md
-manifest.json
-package-lock.json
-package.json
-reports/
-scripts/
-SECURITY.md
+AUTONOMOUS_LOG.md
