@@ -2,6 +2,12 @@
 
 # BNB Good Vibes Only — DeFi Agent (BSC) — Dual Track 10+10
 
+**Judge TL;DR (why this is different):**
+- **Safety-by-default:** DRY_RUN is the default; LIVE requires explicit confirmations.
+- **Proof-first artifacts:** JSON report per run + `manifest.json` pinned to a commit (see `docs/sample_report_rebalance_dry.json`).
+- **Verifiable execution:** real BscScan tx links included (see “Latest Onchain Proof”).
+- **60s demo video:** https://youtu.be/pRaU3KDAxxM
+
 **One-sentence hook:** A safety-bounded OpenClaw DeFi agent SkillKit that executes deterministic WBNB/USDT portfolio rebalancing on BSC with reproducible proof artifacts and verified onchain transactions.
 
 This repo is a **reproducible** hackathon build: baseline is fully open-source; secret A/B run via **local plugins** (not committed).
