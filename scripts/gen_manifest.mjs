@@ -15,7 +15,12 @@ if (!latestReport) {
 }
 
 const sdna = process.env.SDNA_ID || 'AOI-2026-0214-BNB-DEX-01';
-const repo = process.env.REPO_URL || '';
+
+// Prefer explicit env, otherwise use a stable default for hackathon reproducibility.
+// Accept either full URL or owner/repo.
+let repo = process.env.REPO_URL || process.env.REPO || '';
+if (!repo) repo = 'edmonddantesj/bnb-goodvibes-dex-agent';
+
 let commit = '';
 try {
   commit = execSync('git rev-parse HEAD', { encoding: 'utf-8' }).trim();
