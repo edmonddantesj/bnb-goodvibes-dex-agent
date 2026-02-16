@@ -28,6 +28,22 @@ try {
   commit = '';
 }
 
+function extractProofUrlsFromReadme(max=8) {
+  try {
+    const md = fs.readFileSync('README.md', 'utf-8');
+    const rx = /https:\/\/bscscan\.com\/tx\/0x[a-fA-F0-9]{64}/g;
+    const hits = md.match(rx) || [];
+    const uniq = [...new Set(hits)];
+    return uniq.slice(0, max);
+  } catch {
+    return [];
+  }
+}
+
+const proofUrls = process.env.PROOF_URLS
+  ? process.env.PROOF_URLS.split(',').map(s => s.trim()).filter(Boolean)
+  : extractProofUrlsFromReadme(8);
+
 const manifest = {
   sdna,
   repo,
@@ -37,7 +53,7 @@ const manifest = {
   artifacts: {
     latest_report: latestReport,
     demo_video: process.env.DEMO_URL || '',
-    proof_urls: process.env.PROOF_URLS ? process.env.PROOF_URLS.split(',').map(s => s.trim()).filter(Boolean) : [],
+    proof_urls: proofUrls,
     notes: ''
   },
   attribution: {

@@ -1,13 +1,20 @@
 {
   "sdna": "AOI-2026-0214-BNB-DEX-01",
   "repo": "edmonddantesj/bnb-goodvibes-dex-agent",
-  "commit": "947515e1b0889d45aa14da558ae28945816c0e28",
+  "commit": "b723d1969908d26c408391762bebd665f1ebc3d7",
   "version": "0.1.0",
-  "created_at": "2026-02-16T09:15:32.153Z",
+  "created_at": "2026-02-16T16:57:38.457Z",
   "artifacts": {
     "latest_report": "reports/run_20260216_181521_aggro_rebalance_live.json",
     "demo_video": "",
-    "proof_urls": [],
+    "proof_urls": [
+      "https://bscscan.com/tx/0x10641f82e759d6a618a34d0b54a0dd6efc75657d43e0ef5148ba5825449f951c",
+      "https://bscscan.com/tx/0x31743560c941d7becb05b221c442c06da68bedf486704f12141806b6e7c57d86",
+      "https://bscscan.com/tx/0x2c19ca8fc0878bc927625fadd5f3a7b024b88f2ee0486ea8b3d1ab7ac60c8a48",
+      "https://bscscan.com/tx/0x7ff1054e4f2f6e365fb752374d0d10794ba44dd140577e0828617e9dc3e72970",
+      "https://bscscan.com/tx/0x2344a12e9c9baf3b4b662954b488571fd84af970d279ead0741608d6d24ce406",
+      "https://bscscan.com/tx/0x6ca5cc7bb3c2b26c4c3bd710cac76f310d07b419aa3df6ca12123617d5d52035"
+    ],
     "notes": ""
   },
   "attribution": {

@@ -2,6 +2,8 @@
 
 # BNB Good Vibes Only — DeFi Agent (BSC) — Dual Track 10+10
 
+**One-sentence hook:** A safety-bounded OpenClaw DeFi agent SkillKit that executes deterministic WBNB/USDT portfolio rebalancing on BSC with reproducible proof artifacts and verified onchain transactions.
+
 This repo is a **reproducible** hackathon build: baseline is fully open-source; secret A/B run via **local plugins** (not committed).
 
 ## What you can do with it (2 real use cases)
