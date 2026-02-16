@@ -23,6 +23,8 @@ import {
 
 const SDNA_ID = process.env.SDNA_ID || 'AOI-2026-0214-BNB-DEX-01';
 const MODE = process.env.MODE || 'rebalance';
+const WALLET_LABEL = process.env.WALLET_LABEL || '';
+const RUN_TAG = process.env.RUN_TAG || WALLET_LABEL || '';
 
 const RPC_URL = process.env.RPC_URL;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
@@ -76,7 +78,7 @@ async function main() {
 
   const [wbnbDec, usdtDec] = await Promise.all([wbnb.decimals(), usdt.decimals()]);
 
-  const runId = mkRunId();
+  const runId = mkRunId() + (RUN_TAG ? `_${RUN_TAG}` : '');
 
   // balances
   const [balWBNB, balUSDT] = await Promise.all([
@@ -102,6 +104,7 @@ async function main() {
   const actions = [];
 
   const reportBase = {
+    wallet_label: WALLET_LABEL || undefined,
     sdna: SDNA_ID,
     run_id: runId,
     timestamp: isoNow(),

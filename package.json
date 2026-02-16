@@ -10,7 +10,9 @@
     "manifest": "node scripts/gen_manifest.mjs",
     "rebalance:dry": "node scripts/run_rebalance_live.mjs",
     "rebalance:live": "CONFIRM_LIVE=YES node scripts/run_rebalance_live.mjs",
-    "manifest:latest": "node scripts/update_manifest_latest.mjs"
+    "manifest:latest": "node scripts/update_manifest_latest.mjs",
+    "multi:dry": "node scripts/run_multi_wallet.mjs",
+    "multi:live": "CONFIRM_LIVE=YES CONFIRM_MULTI_LIVE=YES node scripts/run_multi_wallet.mjs"
   },
   "dependencies": {
     "dotenv": "^16.4.5",

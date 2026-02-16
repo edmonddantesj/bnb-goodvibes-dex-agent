@@ -13,6 +13,8 @@ import { checkWalletRisk } from './cybercentry_wallet_gate.mjs';
 
 const SDNA_ID = process.env.SDNA_ID || 'AOI-2026-0214-BNB-DEX-01';
 const MODE = process.env.MODE || 'baseline';
+const WALLET_LABEL = process.env.WALLET_LABEL || '';
+const RUN_TAG = process.env.RUN_TAG || WALLET_LABEL || '';
 
 const RPC_URL = process.env.RPC_URL;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
@@ -86,7 +88,7 @@ async function main() {
     wbnb.symbol().catch(() => 'WBNB')
   ]);
 
-  const runId = mkRunId();
+  const runId = mkRunId() + (RUN_TAG ? `_${RUN_TAG}` : '');
 
   const amountIn = ethers.parseUnits(String(AMOUNT_IN_USDT), usdtDec);
   const pathAddr = [USDT, WBNB];
@@ -153,6 +155,7 @@ async function main() {
   };
 
   const report = {
+  wallet_label: WALLET_LABEL || undefined,
     sdna: SDNA_ID,
     run_id: runId,
     timestamp: isoNow(),

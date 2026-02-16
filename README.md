@@ -66,6 +66,38 @@ SDNA_ID=AOI-2026-0214-BNB-DEX-01 MODE=rebalance UPDATE_MANIFEST=1 CONFIRM_LIVE=Y
 Tip: after any run, `reports/` contains the JSON proof artifact and `manifest.json` points to the latest report when `UPDATE_MANIFEST=1` is set.
 
 
+## Dual-wallet ops (Stable + Aggro)
+If you want to validate **risk segmentation** (stable wallet vs aggro wallet) in one go, use the multi-wallet runner.
+
+### Recommended: key files (local-only)
+Create two local key files with strict perms (NEVER commit):
+```bash
+# example paths (pick your own)
+mkdir -p ~/aoi-vault
+chmod 700 ~/aoi-vault
+
+# put raw hex private key inside each file
+nano ~/aoi-vault/bnb_stable_private_key.txt
+nano ~/aoi-vault/bnb_aggro_private_key.txt
+chmod 600 ~/aoi-vault/bnb_*_private_key.txt
+```
+
+### Multi-wallet DRY (no tx)
+```bash
+RPC_URL=... STABLE_KEY_FILE=~/aoi-vault/bnb_stable_private_key.txt AGGRO_KEY_FILE=~/aoi-vault/bnb_aggro_private_key.txt MULTI_MODE=rebalance UPDATE_MANIFEST=1 TARGET_WBNB_BPS=5000 MAX_SLIPPAGE_BPS=50 THRESHOLD_USD=0.5 WALLET_STABLE_MAX_TRADE_USD=1 WALLET_AGGRO_MAX_TRADE_USD=2 npm run multi:dry
+```
+
+### Multi-wallet LIVE (onchain) — disabled by default
+Requires **double confirmation**:
+```bash
+RPC_URL=... STABLE_KEY_FILE=~/aoi-vault/bnb_stable_private_key.txt AGGRO_KEY_FILE=~/aoi-vault/bnb_aggro_private_key.txt MULTI_MODE=rebalance UPDATE_MANIFEST=1 CONFIRM_LIVE=YES CONFIRM_MULTI_LIVE=YES npm run multi:live
+```
+
+Notes:
+- LIVE is intentionally hard to trigger to prevent accidents.
+- Reports include `wallet_label` so proofs are attributable.
+
+
 ## Secret modes
 - Put local plugins here (gitignored):
   - `strategies/secret_a.local.mjs`
