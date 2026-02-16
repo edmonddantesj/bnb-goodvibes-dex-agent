@@ -34,7 +34,9 @@ export function getProvider(rpcUrl) {
 }
 
 export function toAddr(x) {
-  return ethers.getAddress(String(x));
+  // Be tolerant of non-checksummed / oddly-cased addresses coming from env.
+  // ethers.getAddress() will checksum a lowercase address.
+  return ethers.getAddress(String(x).trim().toLowerCase());
 }
 
 export function bscscanTx(txHash) {

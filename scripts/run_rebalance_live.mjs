@@ -217,16 +217,14 @@ async function main() {
 
   // Human-friendly summary (for demo videos)
   const pct = (targetBps / 100).toFixed(2);
-  console.log('
-=== Rebalance Summary (WBNB/USDT) ===');
+  console.log(`\n=== Rebalance Summary (WBNB/USDT) ===`);
   console.log('Target WBNB:', `${pct}%`);
   console.log('Portfolio total (USDT approx):', total.toString());
   console.log('Value WBNB (USDT):', valueWBNB.toString());
   console.log('Value USDT:', valueUSDT.toString());
   console.log('Delta WBNB value (USDT):', delta.toString());
   console.log('Execution:', LIVE ? 'LIVE' : 'DRY_RUN');
-  console.log('====================================
-');
+  console.log('====================================\n');
 
   // write report
   const outPath = path.join(process.cwd(), 'reports', `${runId}_${MODE}_${LIVE ? 'live' : 'dry'}.json`);
