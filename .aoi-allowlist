@@ -1,18 +1,19 @@
-# AOI Guard allowlist (tightened)
-
-.aoi-allowlist
-.github/
-
-# Node project
+README.md
+AUTONOMOUS_LOG.md
+SECURITY_ETHICS.md
+manifest.json
 package.json
 package-lock.json
-
-# App
-manifest.json
+.gitignore
+.env.example
+.aoi-allowlist
 scripts/
+packages/
+apps/
 reports/
-
-# Docs
-README.md
-SECURITY_ETHICS.md
-AUTONOMOUS_LOG.md
+runs/
+strategies/
+context/
+docs/
+SECURITY.md
+.github/
