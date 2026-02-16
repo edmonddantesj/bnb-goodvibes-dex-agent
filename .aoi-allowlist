@@ -10,3 +10,10 @@ package-lock.json
 scripts/
 packages/
 apps/
+reports/
+runs/
+strategies/
+context/
+docs/
+SECURITY.md
+.github/
