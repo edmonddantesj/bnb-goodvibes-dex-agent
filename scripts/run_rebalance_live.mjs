@@ -29,7 +29,7 @@ const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const CONFIRM_LIVE = process.env.CONFIRM_LIVE || 'NO';
 const LIVE = CONFIRM_LIVE === 'YES';
 
-const TARGET = Number(process.env.TARGET_WBNB_RATIO || 0.5); // 0..1
+const TARGET_WBNB_BPS = Number(process.env.TARGET_WBNB_BPS || 5000); // 0..10000 (e.g. 5000=50%)
 const MAX_SLIPPAGE_BPS = Number(process.env.MAX_SLIPPAGE_BPS || 50);
 const MAX_TRADE_USD = Number(process.env.MAX_TRADE_USD || 20); // cap risk
 const THRESHOLD_USD = Number(process.env.THRESHOLD_USD || 1);  // ignore tiny deltas
@@ -57,8 +57,8 @@ async function main() {
   must(RPC_URL, 'RPC_URL');
   must(PRIVATE_KEY, 'PRIVATE_KEY');
 
-  const target = clamp(TARGET, 0, 1);
-  if (!Number.isFinite(target)) throw new Error('TARGET_WBNB_RATIO invalid');
+  const targetBps = Math.floor(clamp(TARGET_WBNB_BPS, 0, 10_000));
+  if (!Number.isFinite(targetBps)) throw new Error('TARGET_WBNB_BPS invalid');
 
   const provider = new ethers.JsonRpcProvider(RPC_URL);
   const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
@@ -91,8 +91,7 @@ async function main() {
   const valueUSDT = balUSDT;
   const total = valueWBNB + valueUSDT;
 
-  const targetWBNBValue = BigInt(Math.floor(Number(total) * target));
-  // NOTE: using Number(total) is safe only for small demo balances; keep small caps in demo.
+  const targetWBNBValue = (total * BigInt(targetBps)) // 10_000n;
 
   // delta in USDT units (positive => too much WBNB)
   const delta = valueWBNB - targetWBNBValue;
@@ -108,7 +107,7 @@ async function main() {
     mode: MODE,
     execution: LIVE ? 'LIVE' : 'DRY_RUN',
     params: {
-      target_wbnb_ratio: target,
+      target_wbnb_bps: targetBps,
       max_slippage_bps: MAX_SLIPPAGE_BPS,
       max_trade_usd: MAX_TRADE_USD,
       threshold_usd: THRESHOLD_USD
@@ -209,6 +208,19 @@ async function main() {
       }
     }
   }
+
+  // Human-friendly summary (for demo videos)
+  const pct = (targetBps / 100).toFixed(2);
+  console.log('
+=== Rebalance Summary (WBNB/USDT) ===');
+  console.log('Target WBNB:', `${pct}%`);
+  console.log('Portfolio total (USDT approx):', total.toString());
+  console.log('Value WBNB (USDT):', valueWBNB.toString());
+  console.log('Value USDT:', valueUSDT.toString());
+  console.log('Delta WBNB value (USDT):', delta.toString());
+  console.log('Execution:', LIVE ? 'LIVE' : 'DRY_RUN');
+  console.log('====================================
+');
 
   // write report
   const outPath = path.join(process.cwd(), 'reports', `${runId}_${MODE}_${LIVE ? 'live' : 'dry'}.json`);
