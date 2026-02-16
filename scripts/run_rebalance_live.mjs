@@ -8,6 +8,7 @@
 import 'dotenv/config';
 import fs from 'node:fs';
 import path from 'node:path';
+import { spawnSync } from 'node:child_process';
 import { ethers } from 'ethers';
 import {
   TOKENS,
@@ -28,6 +29,8 @@ const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
 const CONFIRM_LIVE = process.env.CONFIRM_LIVE || 'NO';
 const LIVE = CONFIRM_LIVE === 'YES';
+
+const UPDATE_MANIFEST = process.env.UPDATE_MANIFEST === '1' || process.env.UPDATE_MANIFEST === 'YES';
 
 const TARGET_WBNB_BPS = Number(process.env.TARGET_WBNB_BPS || 5000); // 0..10000 (e.g. 5000=50%)
 const MAX_SLIPPAGE_BPS = Number(process.env.MAX_SLIPPAGE_BPS || 50);
@@ -230,6 +233,14 @@ async function main() {
   }, null, 2));
 
   console.log('Wrote report:', outPath);
+
+  if (UPDATE_MANIFEST) {
+    console.log('[manifest] UPDATE_MANIFEST=1 → updating manifest.json with latest report...');
+    const res = spawnSync('npm', ['run', 'manifest:latest'], { stdio: 'inherit' });
+    if ((res.status ?? 1) !== 0) {
+      console.warn('[manifest] WARN: manifest update failed (continuing)');
+    }
+  }
 
   const proofUrls = actions.filter(a => a?.txHash).map(a => a.explorerUrl);
   if (proofUrls.length) {
