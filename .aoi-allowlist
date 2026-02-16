@@ -1,0 +1,12 @@
+README.md
+AUTONOMOUS_LOG.md
+SECURITY_ETHICS.md
+manifest.json
+package.json
+package-lock.json
+.gitignore
+.env.example
+.aoi-allowlist
+scripts/
+packages/
+apps/

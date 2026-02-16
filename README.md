@@ -1,23 +1,25 @@
-<!-- 🧬 S-DNA: AOI-2026-0214-BNB-DEX-01 -->
+<!-- 🧬 S-DNA: AOI-2026-0214-BNB-DEX-01 (extend: SKILLKIT-REB01) -->
 
-# BNB Good Vibes Only — DeFi Agent (BSC) — Dual Track 10+10
+# BSC AI SkillKit — Safe Onchain Actions for Agents
+**Demo:** 2-token Portfolio Rebalance (**WBNB/USDT**)  
+**Chain:** BSC Mainnet  
 
-This repo is a **reproducible** hackathon build: baseline is fully open-source; secret A/B run via **local plugins** (not committed).
+## Why this is different (5 points)
+1) **Infra-first:** a reusable SkillKit foundation (not a one-off agent demo).
+2) **Safety-by-default:** allowlists, slippage caps, max trade limits, and explicit `CONFIRM_LIVE=YES`.
+3) **Reproducible:** DRY_RUN works for anyone; LIVE is optional and gated.
+4) **Proof artifacts:** every run outputs `reports/run_*.json` + `manifest.json` binding commit → run → tx hashes.
+5) **Hackathon-safe:** no token launches, fundraising, liquidity opening, or airdrop mechanics.
 
-## Proof Standard (S-DNA MVP)
-- Every run writes a JSON report: `reports/run_<mode>_<ts>.json` (includes `sdna`)
-- Repo root has `manifest.json` that links commit + artifacts
-
-## Latest Onchain Proof (BSC mainnet)
-- Baseline report: `reports/run_20260214_192247_baseline_live.json`
+## Onchain Proof (baseline, BSC mainnet)
 - Approve tx: https://bscscan.com/tx/0x10641f82e759d6a618a34d0b54a0dd6efc75657d43e0ef5148ba5825449f951c
 - Swap tx: https://bscscan.com/tx/0x31743560c941d7becb05b221c442c06da68bedf486704f12141806b6e7c57d86
 
-## Quick Start (baseline)
+## Quick Start
 1) Copy env template:
 ```bash
 cp .env.example .env
-# fill RPC + PRIVATE KEY locally (never commit)
+# fill RPC_URL + PRIVATE_KEY locally (never commit)
 ```
 
 2) Install deps:
@@ -25,44 +27,45 @@ cp .env.example .env
 npm i
 ```
 
-3) Run baseline (dry-run, no tx):
+## Demo: Rebalance (WBNB/USDT)
+### DRY (no tx)
 ```bash
-cp .env.example .env
-# fill RPC_URL + PRIVATE_KEY locally
+SDNA_ID=AOI-2026-0214-BNB-DEX-01 MODE=rebalance npm run rebalance:dry
+```
+
+### LIVE (onchain, requires explicit confirm)
+```bash
+SDNA_ID=AOI-2026-0214-BNB-DEX-01 MODE=rebalance npm run rebalance:live
+```
+
+## Baseline (approve + swap proof runner)
+### DRY
+```bash
 SDNA_ID=AOI-2026-0214-BNB-DEX-01 MODE=baseline npm run baseline:dry
 ```
 
-4) Run baseline (LIVE onchain, requires explicit confirm):
+### LIVE
 ```bash
 SDNA_ID=AOI-2026-0214-BNB-DEX-01 MODE=baseline npm run baseline:live
 ```
 
-5) Generate/update manifest:
+## Build / Proof Log
+- `AUTONOMOUS_LOG.md`
+- `SECURITY_ETHICS.md`
+
+---
+
+## AOI Guard Cheat Sheet (When commits are blocked)
+This repo uses **AOI Guard** (default-deny). If a commit/push is blocked:
+
+1) See what you staged:
 ```bash
-node scripts/gen_manifest.mjs --latest-report reports/<your-report>.json
+git status
 ```
 
-## Secret modes
-- Put local plugins here (gitignored):
-  - `strategies/secret_a.local.mjs`
-  - `strategies/secret_b.local.mjs`
-
-## Optional wallet risk gate (Cybercentry)
-This repo includes a **disabled-by-default** wallet risk gate hook.
-
-Enable it by setting these in your local `.env` (never commit secrets):
+2) If you added a new file/folder intentionally, allow it:
 ```bash
-ENABLE_WALLET_RISK_GATE=1
-CYBERCENTRY_ENDPOINT=<official endpoint>
-CYBERCENTRY_API_KEY=<your key>
-CYBERCENTRY_FAIL_CLOSED=1
+nano .aoi-allowlist
+# then
+git add .aoi-allowlist
 ```
-- If the gate returns a non-benign verdict (or errors when fail-closed), LIVE execution will abort.
-
-## Notes
-- No private keys or secret strategy params are committed.
-- Baseline should remain enough to reproduce and verify on-chain proof.
-
-## Transparency
-- Build log: `AUTONOMOUS_LOG.md`
-- Security & ethics stance: `SECURITY_ETHICS.md`
