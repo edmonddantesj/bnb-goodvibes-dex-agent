@@ -1,0 +1,47 @@
+{
+  "wallet_label": "stable",
+  "sdna": "AOI-2026-0214-BNB-DEX-01",
+  "run_id": "run_20260216_181513_stable",
+  "timestamp": "2026-02-16T09:15:14.515Z",
+  "chain": "bsc",
+  "wallet": "0x357735bA07F1E460f59578112B2bf40d98c23fd1",
+  "mode": "rebalance",
+  "execution": "LIVE",
+  "params": {
+    "target_wbnb_bps": 5000,
+    "max_slippage_bps": 50,
+    "max_trade_usd": 1,
+    "threshold_usd": 0.5
+  },
+  "snapshot": {
+    "balances": {
+      "wbnb": "4766167503911079",
+      "usdt": "7090000000000000000"
+    },
+    "price": {
+      "wbnb_to_usdt_for_1_wbnb": "614683710851499159419"
+    },
+    "value_usdt": {
+      "wbnb": "2929685527843889173",
+      "usdt": "7090000000000000000",
+      "total": "10019685527843889173"
+    }
+  },
+  "actions": [
+    {
+      "type": "approve",
+      "token": "USDT",
+      "txHash": "0x2c19ca8fc0878bc927625fadd5f3a7b024b88f2ee0486ea8b3d1ab7ac60c8a48",
+      "explorerUrl": "https://bscscan.com/tx/0x2c19ca8fc0878bc927625fadd5f3a7b024b88f2ee0486ea8b3d1ab7ac60c8a48",
+      "status": "success"
+    },
+    {
+      "type": "swap",
+      "direction": "USDT->WBNB",
+      "txHash": "0x7ff1054e4f2f6e365fb752374d0d10794ba44dd140577e0828617e9dc3e72970",
+      "explorerUrl": "https://bscscan.com/tx/0x7ff1054e4f2f6e365fb752374d0d10794ba44dd140577e0828617e9dc3e72970",
+      "status": "success"
+    }
+  ],
+  "notes": "LIVE run executed onchain."
+}
