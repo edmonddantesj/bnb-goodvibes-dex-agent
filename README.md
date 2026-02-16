@@ -129,6 +129,10 @@ CYBERCENTRY_FAIL_CLOSED=1
 - If a hackathon requires shipping a proof file, copy one report into `docs/` (or link the tx hash in README) and keep it redacted.
 - See: `docs/sample_report_rebalance_dry.json` and `docs/sample_manifest.json`.
 
+## OpenClaw Edition notes
+- How to run this from an OpenClaw workflow: `docs/openclaw_run.md`
+- Naming note: `baseline:stub` is **not** an onchain baseline. It only generates a sample report JSON to validate the S-DNA artifact plumbing.
+
 ## Notes
 - No private keys or secret strategy params are committed.
 - Baseline should remain enough to reproduce and verify on-chain proof.
