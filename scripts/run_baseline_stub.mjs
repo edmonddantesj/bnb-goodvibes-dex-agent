@@ -17,7 +17,8 @@ function mkRunId() {
 const SDNA_ID = process.env.SDNA_ID || 'AOI-2026-0214-BNB-DEX-01';
 const MODE = process.env.MODE || 'baseline';
 
-// Stub report: replace with real onchain execution (approve+swap) later.
+// Sample report only (NO TX): use this to validate S-DNA report plumbing and demo parsing.
+// For real baseline onchain proof, use: npm run baseline:live
 const runId = mkRunId();
 const report = {
   sdna: SDNA_ID,

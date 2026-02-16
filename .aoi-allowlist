@@ -15,5 +15,6 @@ runs/
 strategies/
 context/
 docs/
+demo_assets/
 SECURITY.md
 .github/

@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "baseline:stub": "node scripts/run_baseline_stub.mjs",
+    "report:sample": "node scripts/run_baseline_stub.mjs",
     "baseline:dry": "node scripts/run_baseline_live.mjs",
     "baseline:live": "CONFIRM_LIVE=YES node scripts/run_baseline_live.mjs",
     "manifest": "node scripts/gen_manifest.mjs",
