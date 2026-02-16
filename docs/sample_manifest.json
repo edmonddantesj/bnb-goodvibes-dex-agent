@@ -1,0 +1,11 @@
+{
+  "sdna": "AOI-2026-0214-BNB-DEX-01",
+  "repo": "edmonddantesj/bnb-goodvibes-dex-agent",
+  "commit": "<git-sha>",
+  "generated_at": "2026-02-16T03:00:00.000Z",
+  "latest_report": "reports/run_20260216_120000_rebalance_dry.json",
+  "proof": {
+    "tx_hashes": [],
+    "explorer": "https://bscscan.com"
+  }
+}

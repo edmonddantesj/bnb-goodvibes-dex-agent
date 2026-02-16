@@ -4,6 +4,16 @@
 
 This repo is a **reproducible** hackathon build: baseline is fully open-source; secret A/B run via **local plugins** (not committed).
 
+## What you can do with it (2 real use cases)
+- **Personal/treasury ops:** keep a 2-token portfolio near a target ratio (e.g., 50/50 WBNB/USDT) with strict safety caps.
+- **Agent infra:** reuse the ‘safe onchain action’ skeleton (quotes → minOut → gated approve/swap → report/manifest proof artifacts).
+
+## Safety-by-default
+- Default mode is **DRY_RUN** (no tx).
+- LIVE requires explicit opt-in: **CONFIRM_LIVE=YES**.
+- Risk caps: `MAX_SLIPPAGE_BPS`, `MAX_TRADE_USD`, and thresholding.
+- Secrets are local-only (`.env` is gitignored).
+
 ## Proof Standard (S-DNA MVP)
 - Every run writes a JSON report: `reports/run_<mode>_<ts>.json` (includes `sdna`)
 - Repo root has `manifest.json` that links commit + artifacts
@@ -42,6 +52,20 @@ SDNA_ID=AOI-2026-0214-BNB-DEX-01 MODE=baseline npm run baseline:live
 node scripts/gen_manifest.mjs --latest-report reports/<your-report>.json
 ```
 
+## Quick Start (rebalance: WBNB/USDT)
+DRY (no tx):
+```bash
+SDNA_ID=AOI-2026-0214-BNB-DEX-01 MODE=rebalance UPDATE_MANIFEST=1 npm run rebalance:dry
+```
+
+LIVE (onchain, requires explicit confirm):
+```bash
+SDNA_ID=AOI-2026-0214-BNB-DEX-01 MODE=rebalance UPDATE_MANIFEST=1 CONFIRM_LIVE=YES npm run rebalance:live
+```
+
+Tip: after any run, `reports/` contains the JSON proof artifact and `manifest.json` points to the latest report when `UPDATE_MANIFEST=1` is set.
+
+
 ## Secret modes
 - Put local plugins here (gitignored):
   - `strategies/secret_a.local.mjs`
@@ -58,6 +82,11 @@ CYBERCENTRY_API_KEY=<your key>
 CYBERCENTRY_FAIL_CLOSED=1
 ```
 - If the gate returns a non-benign verdict (or errors when fail-closed), LIVE execution will abort.
+
+## Artifact policy
+- `reports/*.json` are **generated outputs** and are gitignored by default to prevent noisy diffs / accidental leakage.
+- If a hackathon requires shipping a proof file, copy one report into `docs/` (or link the tx hash in README) and keep it redacted.
+- See: `docs/sample_report_rebalance_dry.json` and `docs/sample_manifest.json`.
 
 ## Notes
 - No private keys or secret strategy params are committed.

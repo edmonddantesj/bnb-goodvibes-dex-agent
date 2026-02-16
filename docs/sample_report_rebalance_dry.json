@@ -1,0 +1,42 @@
+{
+  "sdna": "AOI-2026-0214-BNB-DEX-01",
+  "run_id": "run_20260216_120000",
+  "timestamp": "2026-02-16T03:00:00.000Z",
+  "chain": "bsc",
+  "wallet": "0x000000000000000000000000000000000000dEaD",
+  "mode": "rebalance",
+  "execution": "DRY_RUN",
+  "params": {
+    "target_wbnb_bps": 5000,
+    "max_slippage_bps": 50,
+    "max_trade_usd": 20,
+    "threshold_usd": 1
+  },
+  "snapshot": {
+    "balances": {
+      "wbnb": "123000000000000000",
+      "usdt": "25000000"
+    },
+    "price": {
+      "wbnb_to_usdt_for_1_wbnb": "700000000"
+    },
+    "value_usdt": {
+      "wbnb": "86100000",
+      "usdt": "25000000",
+      "total": "111100000"
+    }
+  },
+  "actions": [
+    {
+      "type": "swap",
+      "direction": "USDT->WBNB",
+      "status": "dry_run",
+      "details": {
+        "amountIn": "5000000",
+        "quotedOut": "7000000000000000",
+        "minOut": "6965000000000000"
+      }
+    }
+  ],
+  "notes": "DRY_RUN only. Set CONFIRM_LIVE=YES to execute onchain."
+}
