@@ -19,9 +19,18 @@ This repo is a **reproducible** hackathon build: baseline is fully open-source; 
 - Repo root has `manifest.json` that links commit + artifacts
 
 ## Latest Onchain Proof (BSC mainnet)
+### Baseline (single wallet)
 - Baseline report: `reports/run_20260214_192247_baseline_live.json`
 - Approve tx: https://bscscan.com/tx/0x10641f82e759d6a618a34d0b54a0dd6efc75657d43e0ef5148ba5825449f951c
 - Swap tx: https://bscscan.com/tx/0x31743560c941d7becb05b221c442c06da68bedf486704f12141806b6e7c57d86
+
+### Rebalance (dual wallet: Stable + Aggro)
+- Stable report: `reports/run_20260216_181513_stable_rebalance_live.json`
+  - tx1: https://bscscan.com/tx/0x2c19ca8fc0878bc927625fadd5f3a7b024b88f2ee0486ea8b3d1ab7ac60c8a48
+  - tx2: https://bscscan.com/tx/0x7ff1054e4f2f6e365fb752374d0d10794ba44dd140577e0828617e9dc3e72970
+- Aggro report: `reports/run_20260216_181521_aggro_rebalance_live.json`
+  - tx1: https://bscscan.com/tx/0x2344a12e9c9baf3b4b662954b488571fd84af970d279ead0741608d6d24ce406
+  - tx2: https://bscscan.com/tx/0x6ca5cc7bb3c2b26c4c3bd710cac76f310d07b419aa3df6ca12123617d5d52035
 
 ## Quick Start (baseline)
 1) Copy env template:
