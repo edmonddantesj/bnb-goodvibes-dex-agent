@@ -31,7 +31,7 @@ Adopt **Option 2**: a proof-first standard.
 
 ## Proof / Artifacts
 - Repo: https://github.com/edmonddantesj/bnb-goodvibes-dex-agent
-- Demo: https://youtu.be/pRaU3KDAxxM
+- Demo: https://youtu.be/Qljm0_aKX70
 
 ## Sensitive info policy
 No secrets, no business plans, no internal strategy details.
