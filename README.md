@@ -22,6 +22,53 @@ OpenClaw is the **engine** here:
 - **Proof standard:** per-run JSON reports + `manifest.json` pinned to a commit for reproducible review.
 
 
+## Submission blurb (buidl detail)
+
+**AOI SkillKit — OpenClaw DeFi Execution SkillKit (BSC)**  
+Repo title: **“BNB Good Vibes Only — DeFi Agent (BSC)”** (AOI SkillKit build)
+
+**This is not a trading bot.**  
+It’s a **safety-first, strategy-agnostic DeFi execution SkillKit** built on **OpenClaw** for **BSC**.  
+We demonstrate deterministic execution guardrails, dual-wallet risk segmentation, and **proof-first artifacts** so judges can reproduce and verify behavior end-to-end.
+
+### What it does
+- Executes a deterministic **WBNB/USDT rebalance** workflow toward a target ratio (e.g., 50/50)
+- Dual-wallet risk segmentation: **Stable** wallet + **Aggro** wallet (separate caps)
+- Produces reproducible evidence: per-run **JSON reports** + `manifest.json` pinned to a commit
+
+### Safety by default (execution trust layer)
+- Default is **DRY_RUN** (no transactions sent)
+- LIVE is explicitly gated: `CONFIRM_LIVE=YES` (multi requires `CONFIRM_MULTI_LIVE=YES`)
+- Risk caps: `MAX_SLIPPAGE_BPS`, `MAX_TRADE_USD`, thresholds, and per-wallet caps
+
+### Proof / Verification
+- Demo video (60s): https://youtu.be/Qljm0_aKX70
+- Repo: https://github.com/edmonddantesj/bnb-goodvibes-dex-agent
+- Onchain proof (BscScan tx examples):
+  - https://bscscan.com/tx/0x10641f82e759d6a618a34d0b54a0dd6efc75657d43e0ef5148ba5825449f951c
+  - https://bscscan.com/tx/0x31743560c941d7becb05b221c442c06da68bedf486704f12141806b6e7c57d86
+- `manifest.json` links: commit → latest report → proof references
+
+### Quick start (DRY)
+```bash
+git clone https://github.com/edmonddantesj/bnb-goodvibes-dex-agent
+cd bnb-goodvibes-dex-agent
+npm i
+
+export RPC_URL="https://bsc-dataseed.binance.org"
+export STABLE_KEY_FILE="~/aoi-vault/bnb_stable_private_key.txt"
+export AGGRO_KEY_FILE="~/aoi-vault/bnb_aggro_private_key.txt"
+
+MULTI_MODE=rebalance UPDATE_MANIFEST=1 TARGET_WBNB_BPS=5000 \
+MAX_SLIPPAGE_BPS=50 THRESHOLD_USD=0.5 \
+WALLET_STABLE_MAX_TRADE_USD=1 WALLET_AGGRO_MAX_TRADE_USD=2 \
+npm run multi:dry
+```
+
+Repo includes proof-first artifacts: `manifest.json` links commit → latest report → proofs; see `docs/sample_report_rebalance_dry.json`.
+
+---
+
 ## What you can do with it (2 real use cases)
 - **Personal/treasury ops:** keep a 2-token portfolio near a target ratio (e.g., 50/50 WBNB/USDT) with strict safety caps.
 - **Agent infra:** reuse the ‘safe onchain action’ skeleton (quotes → minOut → gated approve/swap → report/manifest proof artifacts).
