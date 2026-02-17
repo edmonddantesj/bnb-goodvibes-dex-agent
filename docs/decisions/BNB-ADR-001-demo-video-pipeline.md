@@ -30,7 +30,7 @@ Choose **Option 2**:
   - Mitigation: keep a minimal ffmpeg mux step and verify output length.
 
 ## Proof / Artifacts
-- Demo video: https://youtu.be/pRaU3KDAxxM
+- Demo video: https://youtu.be/Qljm0_aKX70
 - Local final MP4 (internal): `bnb-goodvibes-demo-final-60s.mp4`
 - Repo: https://github.com/edmonddantesj/bnb-goodvibes-dex-agent
 

@@ -25,7 +25,7 @@ Frame as **Option 2**: a **safe onchain agent** (AI agent) with proof-first arti
 
 ## Proof / Artifacts
 - Repo: https://github.com/edmonddantesj/bnb-goodvibes-dex-agent
-- Demo video: https://youtu.be/pRaU3KDAxxM
+- Demo video: https://youtu.be/Qljm0_aKX70
 
 ## Sensitive info policy
 No business plan/strategy details included.
