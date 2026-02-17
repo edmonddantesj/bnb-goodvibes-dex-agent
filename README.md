@@ -6,6 +6,7 @@
 - **Safety-by-default:** DRY_RUN is the default; LIVE requires explicit confirmations.
 - **Proof-first artifacts:** JSON report per run + `manifest.json` pinned to a commit (see `docs/sample_report_rebalance_dry.json`).
 - **Verifiable execution:** real BscScan tx links included (see “Latest Onchain Proof”).
+- **Decision log:** `docs/decisions/` (ADR: demo pipeline / framing / proof-first)
 - **60s demo video:** https://youtu.be/pRaU3KDAxxM
 
 **One-sentence hook:** A safety-bounded OpenClaw DeFi agent SkillKit that executes deterministic WBNB/USDT portfolio rebalancing on BSC with reproducible proof artifacts and verified onchain transactions.
