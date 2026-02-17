@@ -3,15 +3,24 @@
 # BNB Good Vibes Only — DeFi Agent (BSC) — Dual Track 10+10
 
 **Judge TL;DR (why this is different):**
+- **Not a trading bot:** a **strategy-agnostic DeFi execution SkillKit** for autonomous agents.
 - **Safety-by-default:** DRY_RUN is the default; LIVE requires explicit confirmations.
 - **Proof-first artifacts:** JSON report per run + `manifest.json` pinned to a commit (see `docs/sample_report_rebalance_dry.json`).
 - **Verifiable execution:** real BscScan tx links included (see “Latest Onchain Proof”).
+- **Why OpenClaw:** deterministic guardrails + explicit approval gates + reproducible proofs (not just a script).
 - **Decision log:** `docs/decisions/` (ADR: demo pipeline / framing / proof-first)
 - **60s demo video:** https://youtu.be/pRaU3KDAxxM
 
-**One-sentence hook:** A safety-bounded OpenClaw DeFi agent SkillKit that executes deterministic WBNB/USDT portfolio rebalancing on BSC with reproducible proof artifacts and verified onchain transactions.
+**One-sentence hook:** **This is not a trading bot.** It’s a safety-first, strategy-agnostic DeFi execution SkillKit on OpenClaw for BSC — with reproducible proof artifacts and verifiable onchain execution.
 
 This repo is a **reproducible** hackathon build: baseline is fully open-source; secret A/B run via **local plugins** (not committed).
+
+## Why OpenClaw (not “just a script”)
+OpenClaw is the **engine** here:
+- **Deterministic guardrails:** dry-run by default, LIVE requires explicit confirmations.
+- **Execution gates:** approvals/confirmations are first-class, reducing operator error.
+- **Proof standard:** per-run JSON reports + `manifest.json` pinned to a commit for reproducible review.
+
 
 ## What you can do with it (2 real use cases)
 - **Personal/treasury ops:** keep a 2-token portfolio near a target ratio (e.g., 50/50 WBNB/USDT) with strict safety caps.
