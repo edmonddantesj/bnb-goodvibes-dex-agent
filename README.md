@@ -9,7 +9,7 @@
 - **Verifiable execution:** real BscScan tx links included (see “Latest Onchain Proof”).
 - **Why OpenClaw:** deterministic guardrails + explicit approval gates + reproducible proofs (not just a script).
 - **Decision log:** `docs/decisions/` (ADR: demo pipeline / framing / proof-first)
-- **60s demo video:** https://youtu.be/pRaU3KDAxxM
+- **60s demo video:** https://youtu.be/Qljm0_aKX70
 
 **One-sentence hook:** **This is not a trading bot.** It’s a safety-first, strategy-agnostic DeFi execution SkillKit on OpenClaw for BSC — with reproducible proof artifacts and verifiable onchain execution.
 
