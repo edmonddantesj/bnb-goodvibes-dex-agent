@@ -18,3 +18,7 @@ docs/
 demo_assets/
 SECURITY.md
 .github/
+
+# AOI security gate (CI + local)
+aoi-core/
+aoi_core/
